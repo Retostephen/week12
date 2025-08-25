@@ -72,7 +72,18 @@ def search_student_by_name():
 			found = True
 	if not found:
 		print("No student found with that name")
-
+def count_students():
+	total = len(students_db)
+	print(f"Total Number of Students: {total}")
+def filter_by_age():
+	age_limit = int(input("Enter age Limit: "))
+	found = False
+	for stud_id, info in students_db.items():
+		if info["age"] > age_limit:
+			print(f"Id: {stud_id}, Name: {info['name']}, Age: {info['age']}, Department: {info['department']}")
+			found = True
+	if not found:
+		print(f"No students older than {age_limit}.")
 def start():
  	while True:
             print("""
@@ -81,6 +92,9 @@ def start():
 		3. Update Student Record
 		4. Get Student Record
 		5. Display all students Record
+		6. Search Student by Name
+		7. Count Students
+		8. Filter by Age
 		>>>""")
             user_choice = int(input(""))
             if user_choice == 1:
@@ -95,5 +109,9 @@ def start():
                display_students()
             elif user_choice == 6:
                search_student_by_name()
+            elif user_choice == 7:
+               count_students()
+            elif user_choice == 8:
+               filter_by_age()
 start()
 
