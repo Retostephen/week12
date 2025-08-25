@@ -36,22 +36,32 @@ def delete_student():
 def update_student():
 	student_id = int(input("Student Id to update: "))
 	if student_id in students_db:
-		choice = input("What do you want to update(name, age, dept):").lower
+		choice = input("What do you want to update(name, age, dept):").lower()
 		if choice == "name":
 			name = input("Student name: ")
-			students_db[student_id]["name"]
+			students_db[student_id]["name"] = name
 			print(students_db)
 		elif choice == "age":
 			age = int(input("Student age: "))
-			students_db[student_id]["age"]
+			students_db[student_id]["age"] = age
 			print(students_db)
 		elif choice == "dept":
 			dept = input("Student dept: ")
-			students_db[student_id]["dept"]
-			print(students_db)
-		students_db[key] = {"name": name, "age": age, "dept": dept}
+			students_db[student_id]["dept"] = dept
+			print(students_db)		
 	else:
 		print("Id not found")
+def get_student():
+	student_id = int(input("Enter Id of Student: "))
+	if student_id in students_db:
+		print(students_db[student_id])
+	else:
+		print("Id not found!")
+def display_students():
+	for stud_id, info in students_db.items:
+		print(f"ID: {stud_id}, Name: {info['name']}, Age: {info['age']}, Grade: {info['grade']}")
+	else:
+		print("No student to display")
 
 def start():
  	while True:
@@ -69,5 +79,9 @@ def start():
                 delete_student()
             elif user_choice == 3:
                update_student()
+            elif user_choice == 4:
+               get_student()
+            elif user_choice == 5:
+               display_students()
 start()
 
