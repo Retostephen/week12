@@ -58,10 +58,20 @@ def get_student():
 	else:
 		print("Id not found!")
 def display_students():
-	for stud_id, info in students_db.items:
-		print(f"ID: {stud_id}, Name: {info['name']}, Age: {info['age']}, Grade: {info['grade']}")
+	if students_db:
+		for stud_id, info in students_db.items():
+			print(f"ID: {stud_id}, Name: {info['name']}, Age: {info['age']}, Department: {info['department']}")
 	else:
 		print("No student to display")
+def search_student_by_name():
+	name = input("Enter the student name: ").lower()
+	found = False
+	for stud_id, info in students_db.items():
+		if info["name"].lower() == name:
+			print(f"Id: {stud_id}, Name: {info['name']}, Age: {info['age']}, Department: {info['department']}")
+			found = True
+	if not found:
+		print("No student found with that name")
 
 def start():
  	while True:
@@ -83,5 +93,7 @@ def start():
                get_student()
             elif user_choice == 5:
                display_students()
+            elif user_choice == 6:
+               search_student_by_name()
 start()
 
