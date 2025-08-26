@@ -16,8 +16,19 @@ def start():
 def call_function(user_choice):
 	if user_choice == 1:
 		display_books()
+	elif user_choice == 2:
+		book_name = input("Book to add \n>>>")
+		add_book(book_name)
 def display_books():
 	if len(library) != 0:
 		for book in library:
 			print(book)
+	else:
+		print("No books in the library")
+def add_book(book_name):
+	if book_name in library:
+		print("Book Exists")
+	else:
+		library.append(book_name)
+		print(f"Book added succesfully")	
 start()
