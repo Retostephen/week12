@@ -15,9 +15,7 @@ def grading_system(score):
 		print("Your grade is 'F'")
 	else:
 		print("Invalid Score")
-try:
-	score = float(input("Enter your score: "))
-	grade = grading_system(score)
-	print(grade)
-except ValueError:
-	print("Enter a valid input!")
+
+score = float(input("Enter your score: "))
+grading_system(score)
+
